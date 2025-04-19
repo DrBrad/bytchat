@@ -1,0 +1,8 @@
+#group_list {
+    background-color: @background_secondary;
+}
+
+#messages_list {
+    background-color: @background;
+}
+

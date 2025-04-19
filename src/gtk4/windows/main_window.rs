@@ -6,13 +6,14 @@ use std::rc::Rc;
 use gtk4::{gdk, style_context_add_provider_for_display, Application, ApplicationWindow, Builder, CssProvider, GestureClick, HeaderBar, Stack, StackPage, StyleContext, Widget};
 use gtk4::prelude::{BoxExt, Cast, GestureSingleExt, GtkWindowExt, ListModelExt, ObjectExt, StyleContextExt, WidgetExt};
 use crate::gtk4::views::inter::stackable::Stackable;
+use crate::gtk4::views::main_view::MainView;
 
 #[derive(Clone)]
 pub struct MainWindow {
     pub window: ApplicationWindow,
     //pub title_bar: TitleBar,
     pub stack: Stack,
-    pub notifications: gtk4::Box,
+    //pub notifications: gtk4::Box,
     //pub bottom_bar: BottomBar,
     pub views: Rc<RefCell<HashMap<String, Box<dyn Stackable>>>>
 }
@@ -117,9 +118,9 @@ impl MainWindow {
             }
         });
 
-        let notifications: gtk4::Box = builder
-            .object("notifications")
-            .expect("Failed to get the 'notifications' from window.ui");
+        //let notifications: gtk4::Box = builder
+        //    .object("notifications")
+        //    .expect("Failed to get the 'notifications' from window.ui");
 
         //let bottom_bar = BottomBar::new();
         //root.append(&bottom_bar.root);
@@ -128,32 +129,19 @@ impl MainWindow {
         window.set_can_focus(true);
         window.set_receives_default(true);
 
-        let gesture = GestureClick::builder().button(0).build();
-
-        gesture.connect_pressed({
-            let window = window.clone();
-            move |gesture, button, _, _| {
-                match gesture.current_button() {
-                    8 => window.activate_action("win.back", None).unwrap(),
-                    9 => window.activate_action("win.next", None).unwrap(),
-                    _ => {}
-                }
-            }
-        });
-        window.add_controller(gesture);
-
         window.show();
 
         let _self = Self {
             window,
             //title_bar,
             stack,
-            notifications,
+            //notifications,
             //bottom_bar,
             views
         };
 
         //_self.add_view(Box::new(DevicesView::new(&_self, devices)));
+        _self.add_view(Box::new(MainView::new()));
 
         //register_window_actions(&_self);
         //register_stack_actions(&_self);

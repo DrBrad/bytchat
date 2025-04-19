@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk+" version="4.0"/>
+
+    <object class="GtkListBoxRow" id="root">
+        <property name="visible">True</property>
+
+        <child>
+            <object class="GtkBox">
+                <property name="visible">True</property>
+                <property name="hexpand">True</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">5</property>
+
+                <child>
+                    <object class="GtkImage" id="icon">
+                        <property name="name">icon</property>
+                        <property name="visible">True</property>
+                        <property name="width-request">60</property>
+                        <property name="height-request">60</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">5</property>
+                        <property name="width-request">60</property>
+
+                        <child>
+                            <object class="GTKLabel" id="name">
+                                <property name="name">name</property>
+                                <property name="visible">True</property>
+                                <property name="halign">start</property>
+                                <property name="xalign">0.0</property>
+                            </object>
+                        </child>
+
+                        <child>
+                            <object class="GTKLabel" id="message">
+                                <property name="name">message</property>
+                                <property name="visible">True</property>
+                                <property name="halign">start</property>
+                                <property name="xalign">0.0</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

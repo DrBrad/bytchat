@@ -1,2 +1,3 @@
 pub mod inter;
-mod main_view;
+pub mod main_view;
+mod group_list_item;

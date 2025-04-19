@@ -24,13 +24,6 @@
 @define-color device_vpn #376141;
 @define-color device_bluetooth #394366;
 
-#main_window {
-    border-top: solid 1px @border;
-    border-left: solid 1px @border;
-    border-right: solid 1px @border;
-    border-bottom: solid 1px @border;
-}
-
 #main_window.maximized {
     border-left: none;
     border-right: none;
