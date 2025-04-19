@@ -1,8 +1,28 @@
 #group_list {
-    background-color: @background_secondary;
+    background-color: @background;
+}
+
+#group_list row {
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0 10px;
+}
+
+#group_list #icon {
+    border-radius: 100%;
+    border: 2px solid @background_shimmer;
+    background-clip: padding-box;
+}
+
+#group_list #name {
+    font-weight: bold;
+}
+
+#group_list #message {
+    color: @text_secondary;
 }
 
 #messages_list {
-    background-color: @background;
+    background-color: @background_secondary;
 }
 

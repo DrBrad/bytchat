@@ -10,14 +10,14 @@
                 <property name="visible">True</property>
                 <property name="hexpand">True</property>
                 <property name="orientation">horizontal</property>
-                <property name="spacing">5</property>
+                <property name="spacing">10</property>
 
                 <child>
-                    <object class="GtkImage" id="icon">
+                    <object class="RoundImage" id="icon">
                         <property name="name">icon</property>
                         <property name="visible">True</property>
-                        <property name="width-request">60</property>
-                        <property name="height-request">60</property>
+                        <property name="width-request">50</property>
+                        <property name="height-request">50</property>
                     </object>
                 </child>
 
@@ -27,7 +27,7 @@
                         <property name="vexpand">True</property>
                         <property name="orientation">vertical</property>
                         <property name="spacing">5</property>
-                        <property name="width-request">60</property>
+                        <property name="width-request">50</property>
 
                         <child>
                             <object class="GTKLabel" id="name">

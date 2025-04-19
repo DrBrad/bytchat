@@ -1,8 +1,9 @@
 use gtk4::{Builder, Image, Label, ListBoxRow};
+use crate::gtk4::widgets::round_image::RoundImage;
 
 pub struct GroupListItem {
     pub root: ListBoxRow,
-    pub icon: Image,
+    pub icon: RoundImage,
     pub name: Label,
     pub message: Label
 }
@@ -15,9 +16,10 @@ impl GroupListItem {
             .object("root")
             .expect("Couldn't find 'root' in device_list_item.ui");
 
-        let icon: Image = builder
+        let icon: RoundImage = builder
             .object("icon")
             .expect("Couldn't find 'icon' in device_list_item.ui");
+        icon.set_from_file(Some("/home/brad/Pictures/raw1.png"));
 
         let name: Label = builder
             .object("name")

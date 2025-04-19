@@ -23,6 +23,7 @@
 
                         <child>
                             <object class="GtkListBox" id="group_list">
+                                <property name="name">group_list</property>
                                 <property name="visible">True</property>
                                 <property name="hexpand">True</property>
                                 <property name="vexpand">True</property>
@@ -57,6 +58,7 @@
 
                                 <child>
                                     <object class="GtkListBox" id="messages_list">
+                                        <property name="name">messages_list</property>
                                         <property name="visible">True</property>
                                         <property name="hexpand">True</property>
                                         <property name="vexpand">True</property>
