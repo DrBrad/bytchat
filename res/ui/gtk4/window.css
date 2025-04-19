@@ -1,0 +1,120 @@
+* {
+    box-shadow: none;
+    text-shadow: none;
+}
+
+window {
+    background-color: @background;
+}
+
+#main_window {
+    background-color: @background;
+}
+
+
+
+
+
+button {
+    border: none;
+}
+
+button:focus, button:checked {
+    outline: none;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+menuitem {
+    border: none;
+    color: @text_primary;
+    font-size: 14px;
+}
+
+menuitem:hover {
+    background-color: @ripple;
+}
+
+menuitem menuitem {
+    margin: 0 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+menuitem menuitem:hover {
+    background-color: @primary;
+}
+
+menu separator {
+    margin: 5px 0;
+    background-color: @border;
+}
+
+menu {
+    padding: 5px 0;
+    border-radius: 0;
+    border: solid 1px @border;
+    background-color: @background;
+}
+
+
+
+
+
+
+/*
+scrollbar {
+    min-width: 5px;
+    min-height: 5px;
+    border: none;
+}
+*/
+
+scrollbar {
+    all: unset;
+    background: transparent;
+}
+
+scrollbar trough {
+    all: unset;
+    background: transparent; /* or match background */
+}
+
+scrollbar slider {
+    all: unset;
+    min-width: 8px;
+    min-height: 8px;
+    border-radius: 4px;
+    box-shadow: none;
+    background-color: #5a5a5a;
+}
+
+scrollbar.vertical slider {
+    margin-right: 2px;
+}
+
+scrollbar.horizontal slider {
+    margin-bottom: 2px;
+}
+
+overshoot {
+    background-image: linear-gradient(transparent, transparent);
+}
+
+paned > separator {
+    background-image: linear-gradient(@background, @background);
+}

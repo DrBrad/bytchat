@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk+" version="3.24"/>
+
+    <menu id="main_window_menu">
+        <submenu>
+            <attribute name="label" translatable="true">_File</attribute>
+            <section>
+                <submenu>
+                    <attribute name="label" translatable="true">_New</attribute>
+                    <section>
+                        <item>
+                            <attribute name="action">win.x</attribute>
+                            <attribute name="label" translatable="yes">Interface...</attribute>
+                        </item>
+                        <item>
+                            <attribute name="action">win.x</attribute>
+                            <attribute name="label" translatable="yes">Socket Listener...</attribute>
+                        </item>
+                        <item>
+                            <attribute name="action">win.x</attribute>
+                            <attribute name="label" translatable="yes">Socket Client...</attribute>
+                        </item>
+                    </section>
+                </submenu>
+                <item>
+                    <attribute name="action">win.open</attribute>
+                    <attribute name="label" translatable="yes">_Open</attribute>
+                    <attribute name="accel">&lt;control&gt;O</attribute>
+                </item>
+            </section>
+            <section>
+                <item>
+                    <attribute name="action">app.settings</attribute>
+                    <attribute name="label" translatable="yes">Se_ttings</attribute>
+                    <attribute name="accel">&lt;control&gt;&lt;alt&gt;X</attribute>
+                </item>
+            </section>
+            <section>
+                <item>
+                    <attribute name="action">app.quit</attribute>
+                    <attribute name="label" translatable="yes">E_xit</attribute>
+                    <attribute name="accel">&lt;control&gt;X</attribute>
+                </item>
+            </section>
+        </submenu>
+        <submenu>
+            <attribute name="label" translatable="true">_Edit</attribute>
+            <section>
+                <item>
+                    <attribute name="action">win.copy</attribute>
+                    <attribute name="label" translatable="yes">_Copy</attribute>
+                </item>
+                <item>
+                    <attribute name="action">win.find-next</attribute>
+                    <attribute name="label" translatable="yes">Find _Next</attribute>
+                    <attribute name="accel">&lt;control&gt;N</attribute>
+                </item>
+                <item>
+                    <attribute name="action">win.find-previous</attribute>
+                    <attribute name="label" translatable="yes">Find Pre_vious</attribute>
+                    <attribute name="accel">&lt;control&gt;B</attribute>
+                </item>
+            </section>
+            <section>
+                <item>
+                    <attribute name="action">win.preferences</attribute>
+                    <attribute name="label" translatable="yes">Preferences</attribute>
+                    <attribute name="accel">&lt;shift&gt;&lt;control&gt;P</attribute>
+                </item>
+            </section>
+        </submenu>
+        <submenu>
+            <attribute name="label" translatable="true">_View</attribute>
+            <section>
+                <item>
+                    <attribute name="action">win.reload</attribute>
+                    <attribute name="label" translatable="yes">Reload</attribute>
+                    <attribute name="accel">&lt;control&gt;R</attribute>
+                </item>
+            </section>
+        </submenu>
+        <submenu>
+            <attribute name="label" translatable="true">_Tools</attribute>
+            <section>
+                <item>
+                    <attribute name="action">app.packet-playground</attribute>
+                    <attribute name="label" translatable="yes">Packet Playground</attribute>
+                </item>
+                <item>
+                    <attribute name="action">app.api</attribute>
+                    <attribute name="label" translatable="yes">API</attribute>
+                </item>
+                <item>
+                    <attribute name="action">app.firewall</attribute>
+                    <attribute name="label" translatable="yes">Firewall Rules</attribute>
+                </item>
+                <item>
+                    <attribute name="action">app.protocol-designer</attribute>
+                    <attribute name="label" translatable="yes">Protocol Designer</attribute>
+                </item>
+            </section>
+            <section>
+                <submenu>
+                    <attribute name="label" translatable="true">_Protocol</attribute>
+                    <section>
+                        <item>
+                            <attribute name="action">app.upnp</attribute>
+                            <attribute name="label" translatable="yes">UPnP</attribute>
+                        </item>
+                        <item>
+                            <attribute name="action">app.dns</attribute>
+                            <attribute name="label" translatable="yes">DNS</attribute>
+                        </item>
+                        <item>
+                            <attribute name="action">app.trace-route</attribute>
+                            <attribute name="label" translatable="yes">Trace Route</attribute>
+                        </item>
+                        <item>
+                            <attribute name="action">app.arp</attribute>
+                            <attribute name="label" translatable="yes">ARP</attribute>
+                        </item>
+                    </section>
+                </submenu>
+                <item>
+                    <attribute name="action">app.port-report</attribute>
+                    <attribute name="label" translatable="yes">Port Report</attribute>
+                </item>
+            </section>
+        </submenu>
+        <submenu>
+            <attribute name="label" translatable="true">_Help</attribute>
+            <section>
+                <item>
+                    <attribute name="action">app.website</attribute>
+                    <attribute name="label" translatable="yes">Website</attribute>
+                </item>
+            </section>
+            <section>
+                <item>
+                    <attribute name="action">win.show-about-dialog</attribute>
+                    <attribute name="label" translatable="yes">About BytChat</attribute>
+                </item>
+            </section>
+        </submenu>
+    </menu>
+</interface>
