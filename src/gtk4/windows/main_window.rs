@@ -5,6 +5,7 @@ use std::process::exit;
 use std::rc::Rc;
 use gtk4::{gdk, gio, style_context_add_provider_for_display, Application, ApplicationWindow, Builder, CssProvider, GestureClick, HeaderBar, Stack, StackPage, StyleContext, Widget};
 use gtk4::prelude::{ApplicationWindowExt, BoxExt, Cast, GestureSingleExt, GtkApplicationExt, GtkWindowExt, ListModelExt, ObjectExt, StyleContextExt, WidgetExt};
+use crate::gtk4::actions::window_actions::register_window_actions;
 use crate::gtk4::views::inter::stackable::Stackable;
 use crate::gtk4::views::main_view::MainView;
 
@@ -143,10 +144,9 @@ impl MainWindow {
             views
         };
 
-        //_self.add_view(Box::new(DevicesView::new(&_self, devices)));
         _self.add_view(Box::new(MainView::new()));
 
-        //register_window_actions(&_self);
+        register_window_actions(&_self);
         //register_stack_actions(&_self);
 
         _self
