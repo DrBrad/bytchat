@@ -1,6 +1,6 @@
-@define-color primary #59436e;
-@define-color background #2b2d30;
-@define-color background_secondary #1e1f22;
+@define-color primary #e6b800;
+@define-color background #151515;
+@define-color background_secondary #000000;
 @define-color background_shimmer #393b40;
 
 @define-color text_primary #cbd7dc;
@@ -16,13 +16,6 @@
 @define-color green #57965C;
 @define-color red #db5c5c;
 @define-color yellow #d4bf4a;
-
-@define-color device_any #305755;
-@define-color device_ethernet #5e5030;
-@define-color device_lan #5e3030;
-@define-color device_wifi #5e3058;
-@define-color device_vpn #376141;
-@define-color device_bluetooth #394366;
 
 #main_window.maximized {
     border-left: none;

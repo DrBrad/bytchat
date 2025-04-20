@@ -52,7 +52,9 @@
 }
 
 #messages #footer entry {
+    all: unset;
     padding: 0 15px;
     border-radius: 20px;
+    background-color: @background;
 }
 
