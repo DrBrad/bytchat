@@ -51,6 +51,12 @@
     background-color: @background_secondary;
 }
 
+#messages #footer button {
+    min-width: 0;
+    min-height: 0;
+    background: none;
+}
+
 #messages #footer entry {
     all: unset;
     padding: 0 15px;

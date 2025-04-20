@@ -7,10 +7,15 @@
         <file alias="res/ui/window.css">res/ui/gtk4/window.css</file>
         <file alias="res/ui/theme.css">res/ui/gtk4/theme.css</file>
 
-        <file alias="res/ui/main_view.ui">res/ui/gtk4/main_view.ui</file>
+        <file alias="res/ui/main_view.ui" preprocess="xml-stripblanks">res/ui/gtk4/main_view.ui</file>
         <file alias="res/ui/main_view.css">res/ui/gtk4/main_view.css</file>
 
 
-        <file alias="res/ui/group_list_item.ui">res/ui/gtk4/group_list_item.ui</file>
+        <file alias="res/ui/groups_view.ui" preprocess="xml-stripblanks">res/ui/gtk4/groups_view.ui</file>
+        <file alias="res/ui/group_list_item.ui" preprocess="xml-stripblanks">res/ui/gtk4/group_list_item.ui</file>
+
+        <file alias="res/ui/messages_view.ui" preprocess="xml-stripblanks">res/ui/gtk4/messages_view.ui</file>
+
+        <file preprocess="xml-stripblanks">res/icons/ic_emoji.svg</file>
     </gresource>
 </gresources>

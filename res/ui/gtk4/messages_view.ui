@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk+" version="4.0"/>
+
+    <object class="GtkBox" id="root">
+        <property name="name">messages</property>
+        <property name="visible">True</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <property name="orientation">vertical</property>
+
+        <child>
+            <object class="GtkBox">
+                <property name="name">header</property>
+                <property name="visible">True</property>
+                <property name="hexpand">True</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">10</property>
+                <property name="height-request">60</property>
+
+                <child>
+                    <object class="RoundImage" id="icon">
+                        <property name="name">icon</property>
+                        <property name="visible">True</property>
+                        <property name="width-request">40</property>
+                        <property name="height-request">40</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GTKLabel" id="name">
+                        <property name="name">name</property>
+                        <property name="visible">True</property>
+                        <property name="halign">start</property>
+                        <property name="xalign">0.0</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkScrolledWindow" id="list_messages_layout">
+                <property name="visible">True</property>
+                <property name="overlay-scrolling">True</property>
+                <property name="vscrollbar-policy">automatic</property>
+
+                <child>
+                    <object class="GtkListBox" id="messages_list">
+                        <property name="name">messages_list</property>
+                        <property name="visible">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkBox">
+                <property name="name">footer</property>
+                <property name="visible">True</property>
+                <property name="hexpand">True</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">10</property>
+
+                <child>
+                    <object class="GtkButton" id="emoji">
+                        <property name="name">emoji</property>
+                        <property name="visible">True</property>
+
+                        <child>
+                            <object class="GtkImage" id="emoji_icon">
+                                <property name="name">emoji_icon</property>
+                                <property name="visible">True</property>
+                                <property name="width-request">32</property>
+                                <property name="height-request">32</property>
+                                <property name="resource">/com/bytchat/rust/res/icons/ic_emoji.svg</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkEntry" id="message">
+                        <property name="name">message</property>
+                        <property name="visible">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="placeholder_text">Message</property>
+                        <property name="height-request">32</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>
