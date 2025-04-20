@@ -1,4 +1,9 @@
+
+
+
+
 #group_list {
+    padding: 10px 0;
     background-color: @background;
 }
 
@@ -10,7 +15,7 @@
 
 #group_list #icon {
     border-radius: 100%;
-    border: 2px solid @background_shimmer;
+    border: 1px solid @background_shimmer;
     background-clip: padding-box;
 }
 
@@ -26,6 +31,28 @@
     background-color: @background_secondary;
 }
 
-entry {
-    margin: 10px;
+#messages #header {
+    padding: 10px;
+    background-color: @background_secondary;
 }
+
+#messages #header #icon {
+    border-radius: 100%;
+    border: 1px solid @background_shimmer;
+    background-clip: padding-box;
+}
+
+#messages #header #name {
+    font-weight: bold;
+}
+
+#messages #footer {
+    padding: 10px;
+    background-color: @background_secondary;
+}
+
+#messages #footer entry {
+    padding: 0 15px;
+    border-radius: 20px;
+}
+

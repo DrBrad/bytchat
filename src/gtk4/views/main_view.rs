@@ -1,11 +1,14 @@
-use gtk4::{gdk, style_context_add_provider_for_display, Builder, CssProvider, ListBox, ScrolledWindow, Widget};
+use gtk4::{gdk, style_context_add_provider_for_display, Builder, CssProvider, Label, ListBox, ScrolledWindow, Widget};
 use gtk4::prelude::Cast;
 use crate::gtk4::views::group_list_item::GroupListItem;
 use crate::gtk4::views::inter::stackable::Stackable;
+use crate::gtk4::widgets::round_image::RoundImage;
 
 pub struct MainView {
     pub root: gtk4::Box,
     pub list_group_layout: ScrolledWindow,
+    pub icon: RoundImage,
+    pub name: Label,
     pub list_messages_layout: ScrolledWindow
 }
 
@@ -34,6 +37,17 @@ impl MainView {
 
 
 
+
+        let icon: RoundImage = builder
+            .object("icon")
+            .expect("Couldn't find 'icon' in main_view.ui");
+
+        let name: Label = builder
+            .object("name")
+            .expect("Couldn't find 'name' in main_view.ui");
+        name.set_text("Edward");
+
+
         let group_list: ListBox = builder
             .object("group_list")
             .expect("Couldn't find 'group_list' in main_view.ui");
@@ -48,6 +62,8 @@ impl MainView {
         Self {
             root,
             list_group_layout,
+            icon,
+            name,
             list_messages_layout
         }
     }

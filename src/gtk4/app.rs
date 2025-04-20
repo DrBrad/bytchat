@@ -1,7 +1,7 @@
-use gtk4::{gdk, style_context_add_provider_for_display, Application, CssProvider, Settings};
+use gtk4::{gdk, gio, style_context_add_provider_for_display, Application, Builder, CssProvider, Settings};
 use gtk4::gio::{resources_register, ApplicationFlags, Resource};
 use gtk4::glib::Bytes;
-use gtk4::prelude::{ApplicationExt, ApplicationExtManual, ObjectExt, StaticType};
+use gtk4::prelude::{ApplicationExt, ApplicationExtManual, GtkApplicationExt, ObjectExt, StaticType};
 use crate::gtk4::widgets::overlay::Overlay;
 use crate::gtk4::widgets::round_image::RoundImage;
 use crate::gtk4::windows::main_window::MainWindow;
@@ -42,17 +42,13 @@ impl App {
 
             //provider.load_from_resource("/net/ethernaught/rust/res/ui/theme.css");
 
-            /*
-            #[cfg(target_os = "macos")]
-            {
-                let builder = Builder::from_resource("/net/ethernaught/rust/res/ui/ethernaught_ui.xml");
-                let model: gio::MenuModel = builder
-                    .object("main_window_menu")
-                    .expect("Couldn't find 'main_window_menu' in ethernaught_ui.xml");
+            let builder = Builder::from_resource("/com/bytchat/rust/res/ui/bytchat_ui.xml");
+            let model: gio::MenuModel = builder
+                .object("main_window_menu")
+                .expect("Couldn't find 'main_window_menu' in bytchat_ui.xml");
 
-                app.set_menubar(Some(&model));
-            }
-            */
+            #[cfg(any(target_os = "linux", target_os = "windows"))]
+            app.set_menubar(Some(&model));
 
             MainWindow::new(&app);
 

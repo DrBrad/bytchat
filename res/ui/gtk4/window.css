@@ -116,5 +116,5 @@ overshoot {
 }
 
 paned > separator {
-    background-image: linear-gradient(@background, @background);
+    background-image: linear-gradient(@background_shimmer, @background_shimmer);
 }

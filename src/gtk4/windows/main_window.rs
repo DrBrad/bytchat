@@ -3,8 +3,8 @@ use std::collections::HashMap;
 use std::path::PathBuf;
 use std::process::exit;
 use std::rc::Rc;
-use gtk4::{gdk, style_context_add_provider_for_display, Application, ApplicationWindow, Builder, CssProvider, GestureClick, HeaderBar, Stack, StackPage, StyleContext, Widget};
-use gtk4::prelude::{BoxExt, Cast, GestureSingleExt, GtkWindowExt, ListModelExt, ObjectExt, StyleContextExt, WidgetExt};
+use gtk4::{gdk, gio, style_context_add_provider_for_display, Application, ApplicationWindow, Builder, CssProvider, GestureClick, HeaderBar, Stack, StackPage, StyleContext, Widget};
+use gtk4::prelude::{ApplicationWindowExt, BoxExt, Cast, GestureSingleExt, GtkApplicationExt, GtkWindowExt, ListModelExt, ObjectExt, StyleContextExt, WidgetExt};
 use crate::gtk4::views::inter::stackable::Stackable;
 use crate::gtk4::views::main_view::MainView;
 
@@ -128,6 +128,9 @@ impl MainWindow {
         window.set_focusable(true);
         window.set_can_focus(true);
         window.set_receives_default(true);
+
+        window.set_show_menubar(true);
+
 
         window.show();
 
