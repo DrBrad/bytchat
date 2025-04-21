@@ -1,10 +1,13 @@
-use gtk4::{Builder, Label};
+use gtk4::{Builder, Label, ListBox};
+use crate::gtk4::views::group_list_item::GroupListItem;
+use crate::gtk4::views::message_list_item::MessageListItem;
 use crate::gtk4::widgets::round_image::RoundImage;
 
 pub struct MessagesView {
     pub root: gtk4::Box,
     pub icon: RoundImage,
-    pub name: Label
+    pub name: Label,
+    pub messages_list: ListBox
 }
 
 impl MessagesView {
@@ -25,10 +28,20 @@ impl MessagesView {
             .expect("Couldn't find 'name' in messages_view.ui");
         name.set_label("Edward");
 
+        let messages_list: ListBox = builder
+            .object("messages_list")
+            .expect("Couldn't find 'messages_list' in messages_view.ui");
+
+        for i in 0..20 {
+            let message = MessageListItem::new();
+            messages_list.append(&message.root);
+        }
+
         Self {
             root,
             icon,
-            name
+            name,
+            messages_list
         }
     }
 }

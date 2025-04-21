@@ -46,6 +46,19 @@
     font-weight: bold;
 }
 
+
+#messages_list {
+    padding: 10px;
+}
+
+#messages_list #to_message {
+    padding: 10px;
+    border-radius: 20px;
+    background-color: @background_shimmer;
+}
+
+
+
 #messages #footer {
     padding: 10px;
     background-color: @background_secondary;

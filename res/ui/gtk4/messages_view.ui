@@ -69,8 +69,7 @@
                         <property name="visible">True</property>
 
                         <child>
-                            <object class="GtkImage" id="emoji_icon">
-                                <property name="name">emoji_icon</property>
+                            <object class="GtkImage">
                                 <property name="visible">True</property>
                                 <property name="width-request">32</property>
                                 <property name="height-request">32</property>
@@ -87,6 +86,22 @@
                         <property name="hexpand">True</property>
                         <property name="placeholder_text">Message</property>
                         <property name="height-request">32</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkButton" id="attachments">
+                        <property name="name">attachments</property>
+                        <property name="visible">True</property>
+
+                        <child>
+                            <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="width-request">32</property>
+                                <property name="height-request">32</property>
+                                <property name="resource">/com/bytchat/rust/res/icons/ic_attachments.svg</property>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>
