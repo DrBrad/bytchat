@@ -62,11 +62,11 @@
 
 #messages_list row {
     all: unset;
+    margin: 1px 0;
 }
 
 #messages_list #message_container {
     padding: 10px;
-    margin: 2px 0;
     border-radius: 20px;
 }
 
