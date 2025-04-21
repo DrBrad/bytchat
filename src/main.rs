@@ -1,3 +1,6 @@
+mod kad;
+mod database;
+
 //#[cfg(feature = "gtk3")]
 //mod gtk3;
 //#[cfg(feature = "gtk3")]
@@ -5,7 +8,6 @@
 
 #[cfg(feature = "gtk4")]
 mod gtk4;
-mod kad;
 
 #[cfg(feature = "gtk4")]
 use crate::gtk4::app::App;
