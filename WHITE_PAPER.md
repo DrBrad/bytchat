@@ -18,7 +18,7 @@ Thoughts
 - We can have a meta option within the DHT for users to store simple information like users icon and name
 
 
-Example of User
+User
 ====
 
 | Key        | Val   | Type        |
@@ -34,33 +34,70 @@ Assume Joining with pre-existing UID
 In this case the user will hash their public key (they should be aware of the public and private key). They will then find the 5 nodes closest to that hash and create a socket that will hang.
 
 
-Example of user Meta
+User Meta
 ====
 
-| Key        | Val     | Type        |
-|------------|---------|-------------|
-| uid        | id      | UID         |
-| avatar     | image   | bytes       |
-| name       | Edward  | string      |
-| signature  | bytes   | SIGNATURE   |
+```json
+{
+    "id": "UID",
+    "content": {
+        "name": "Edward",
+        "avatar": BYTES,
+        "timestamp": long
+    },
+    "signature": SIGNATURE_OF_CONTENT
+}
+```
 
 A user can create meta at any point, it will contain the avatar and nam of the user, possibly more later on. To update this information or create it the user must sign the meta with their private key. The nodes hosting this information will use the UID given within the meta and verify the integrity of the meta. If the checks are valid the meta is stored for a TTL of 3-7 days. The meta will be stored on the 5 closest nodes to the users sha("meta" + UID).
 
 If a user needs to obtain the meta for a particular UID they will take that UID sha("meta" + UID) and find the 5 closest nodes to this. Once they have found them they will ask for the meta in which they will then verify the integrity 
 via the signature based off of the public key of that UID.
 
-
-
-
-Example of message store - not representation of message transit
+Message Handshake
 ====
 
-| Key          | Val            | Type  |
-|--------------|----------------|-------|
-| type         | to/from        | enum  |
-| chat         | id             | UID   |
-| message      | bytes          | bytes |
-| content_type | image          | enum  |
-| timestamp    | date           | long  |
-| status       | sent/delivered | enum  |
+```json
+{
+    "to": "UID",
+    "content": {
+        "from": "UID",
+        "public_key": RSA_PUBLIC_KEY
+    },
+    "timestamp": long,
+    "signature": SIGNATURE_OF_CONTENT
+}
+```
 
+When a user wishes to start messaging a new person they will lookup the RSA for that UID and find the 5 nodes closest to sha("chat" + UID). Once they have found those 5 nodes they will then generate a handshake like the one above, once the user has received the message they will send a similar message as the one above back to the sender using the same process. When both parties have the others public key they will use each others public key as diffie-helmen password which will be used for messaging later on.
+
+
+
+
+
+Messaging Transit
+====
+
+```json
+{
+    "id": "UID",
+    "to": "UID",
+    "content": AES-512-CBC {
+        "mime_type": "image/jpeg",
+        "data": BYTES
+    },
+    "timestamp": long,
+    "signature": SIGNATURE_OF_CONTENT
+}
+```
+
+Once a handshake has been made users can send messages via the sha("chat" + UID) and sending messages like the example above. Once a device has received the message they will send back to the tracker that they have received the message by sending the signature and signing it with their own signature. In which case the tracker will remove the message. If a tracker has held onto the message for more than a TTL of 3-7 days it will remove the message.
+
+- delivered should be message signature + signature sent to the messages from tracker.
+
+
+
+Message Syncing
+====
+
+Assuming the user wants more than 1 device to send messages from.
