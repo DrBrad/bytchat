@@ -15,9 +15,19 @@
 
                 <child>
                     <object class="GTKLabel" id="message">
+                        <property name="name">message</property>
                         <property name="visible">True</property>
                         <property name="halign">start</property>
                         <property name="xalign">0.0</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GTKLabel" id="time">
+                        <property name="name">time</property>
+                        <property name="visible">True</property>
+                        <property name="halign">end</property>
+                        <property name="valign">end</property>
                     </object>
                 </child>
 

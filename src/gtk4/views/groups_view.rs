@@ -22,6 +22,8 @@ impl GroupsView {
             group_list.append(&group.root);
         }
 
+        group_list.select_row(Some(&group_list.row_at_index(0).unwrap()));
+
         Self {
             root
         }

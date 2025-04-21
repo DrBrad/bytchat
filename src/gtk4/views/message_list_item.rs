@@ -10,7 +10,8 @@ pub struct MessageListItem {
     pub root: ListBoxRow,
     pub _type: MessageTypes,
     pub message_container: gtk4::Box,
-    pub message: Label
+    pub message: Label,
+    pub time: Label
 }
 
 impl MessageListItem {
@@ -20,25 +21,31 @@ impl MessageListItem {
             MessageTypes::From => Builder::from_resource("/com/bytchat/rust/res/ui/from_message_list_item.ui"),
             MessageTypes::To => Builder::from_resource("/com/bytchat/rust/res/ui/to_message_list_item.ui")
         };
-        //let builder = Builder::from_resource("/com/bytchat/rust/res/ui/from_message_list_item.ui");
+        //let builder = Builder::from_resource("/com/bytchat/rust/res/ui/message_list_item.ui");
         let root: ListBoxRow = builder
             .object("root")
-            .expect("Couldn't find 'root' in from_message_list_item.ui");
+            .expect("Couldn't find 'root' in message_list_item.ui");
 
         let message_container: gtk4::Box = builder
             .object("message_container")
-            .expect("Couldn't find 'message_container' in from_message_list_item.ui");
+            .expect("Couldn't find 'message_container' in message_list_item.ui");
 
         let message: Label = builder
             .object("message")
-            .expect("Couldn't find 'message' in from_message_list_item.ui");
+            .expect("Couldn't find 'message' in message_list_item.ui");
         message.set_label("Whats up bro?");
+
+        let time: Label = builder
+            .object("time")
+            .expect("Couldn't find 'time' in message_list_item.ui");
+        time.set_label("10:05 AM");
 
         Self {
             root,
             _type,
             message_container,
-            message
+            message,
+            time
         }
     }
 }

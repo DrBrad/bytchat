@@ -1,16 +1,17 @@
-
-
-
-
 #group_list {
     padding: 10px 0;
     background-color: @background;
 }
 
 #group_list row {
+    all: unset;
     border-radius: 10px;
     padding: 10px;
     margin: 0 10px;
+}
+
+#group_list row:selected {
+    background-color: @ripple;
 }
 
 #group_list #icon {
@@ -67,7 +68,6 @@
     padding: 10px;
     margin: 2px 0;
     border-radius: 20px;
-    font-size: 14px;
 }
 
 #messages_list #message_container.to {
@@ -92,6 +92,15 @@
 
 #messages_list #message_container.to.next {
     border-bottom-right-radius: 2px;
+}
+
+#messages_list #message {
+    font-size: 14px;
+}
+
+#messages_list #time {
+    font-size: 10px;
+    color: @text_secondary;
 }
 
 
