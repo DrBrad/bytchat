@@ -13,7 +13,7 @@ const MIN_HEIGHT: i32 = 20;
 
 #[derive(Default)]
 pub struct RoundImageImpl {
-    picture: RefCell<Picture>
+    texture: RefCell<Option<Texture>>
 }
 
 #[glib::object_subclass]
@@ -46,10 +46,8 @@ impl WidgetImpl for RoundImageImpl {
             radius
         ));
 
-        if let Some(paintable) = self.picture.borrow().paintable() {
-            if let Some(texture) = paintable.downcast_ref::<Texture>() {
-                snapshot.append_texture(texture, &Rect::new(0.0, 0.0, width, height));
-            }
+        if let Some(texture) = self.texture.borrow().as_ref() {
+            snapshot.append_texture(texture, &Rect::new(0.0, 0.0, width, height));
         }
 
         snapshot.pop();
@@ -78,7 +76,7 @@ impl RoundImage {
 
     pub fn set_from_file(&self, path: Option<&str>) {
         if let Ok(texture) = Texture::from_file(&File::for_path(Path::new(path.unwrap()))) {
-            self.imp().picture.borrow().set_paintable(Some(&texture));
+            *self.imp().texture.borrow_mut() = Some(texture);
         }
     }
 }
