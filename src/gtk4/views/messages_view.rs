@@ -1,4 +1,5 @@
-use gtk4::{Builder, Label, ListBox};
+use gtk4::{Builder, Label, ListBox, ScrolledWindow};
+use gtk4::prelude::AdjustmentExt;
 use crate::gtk4::views::group_list_item::GroupListItem;
 use crate::gtk4::views::message_list_item::{MessageListItem, MessageTypes};
 use crate::gtk4::widgets::round_image::RoundImage;
@@ -42,6 +43,15 @@ impl MessagesView {
             let message = MessageListItem::new(MessageTypes::From);
             messages_list.append(&message.root);
         }
+
+
+
+        let list_messages_layout: ScrolledWindow = builder
+            .object("list_messages_layout")
+            .expect("Couldn't find 'list_messages_layout' in messages_view.ui");
+
+        //let adj = list_messages_layout.vadjustment();
+        //adj.set_value(adj.upper() - adj.page_size());
 
         Self {
             root,

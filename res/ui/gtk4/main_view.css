@@ -59,11 +59,10 @@
     padding: 10px;
     margin: 2px 0;
     border-radius: 20px;
-    background-color: @secondary;
 }
 
 #messages_list #message_container.to {
-    background-color: @secondary;
+    background-color: @primary;
 }
 
 #messages_list #message_container.from {
