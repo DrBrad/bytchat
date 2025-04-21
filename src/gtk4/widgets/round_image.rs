@@ -5,7 +5,7 @@ use gtk4::gdk::Texture;
 use gtk4::gio::File;
 use gtk4::glib::property::PropertyGet;
 use gtk4::graphene::Rect;
-use gtk4::prelude::{DisplayExt, ObjectExt, PaintableExt, SnapshotExt, WidgetExt};
+use gtk4::prelude::{Cast, DisplayExt, ObjectExt, PaintableExt, SnapshotExt, WidgetExt};
 use gtk4::subclass::prelude::{ObjectImpl, ObjectSubclass, ObjectSubclassExt, ObjectSubclassIsExt, WidgetClassExt, WidgetImpl, WidgetImplExt};
 
 const MIN_WIDTH: i32 = 20;
@@ -43,13 +43,13 @@ impl WidgetImpl for RoundImageImpl {
 
         snapshot.push_rounded_clip(&gsk::RoundedRect::from_rect(
             Rect::new(0.0, 0.0, width, height),
-            radius,
+            radius
         ));
 
-        //self.parent_snapshot(snapshot);
-
-        if let picture = self.picture.borrow() {
-            //picture.snapshot(&cr);
+        if let Some(paintable) = self.picture.borrow().paintable() {
+            if let Some(texture) = paintable.downcast_ref::<Texture>() {
+                snapshot.append_texture(texture, &Rect::new(0.0, 0.0, width, height));
+            }
         }
 
         snapshot.pop();

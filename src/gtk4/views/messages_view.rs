@@ -22,7 +22,7 @@ impl MessagesView {
         let icon: RoundImage = builder
             .object("icon")
             .expect("Couldn't find 'icon' in messages_view.ui");
-        icon.set_from_file(Some("/home/brad/Pictures/raw1.png"));
+        icon.set_from_file(Some("/home/brad/Downloads/Designer.jpeg"));
 
         let name: Label = builder
             .object("name")
