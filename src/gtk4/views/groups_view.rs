@@ -17,7 +17,7 @@ impl GroupsView {
             .object("group_list")
             .expect("Couldn't find 'group_list' in groups_view.ui");
 
-        for i in 0..20 {
+        for i in 0..2 {
             let group = GroupListItem::new();
             group_list.append(&group.root);
         }

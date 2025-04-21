@@ -33,7 +33,7 @@ impl MessageListItem {
         let message: Label = builder
             .object("message")
             .expect("Couldn't find 'message' in message_list_item.ui");
-        message.set_label("Whats up bro?");
+        message.set_label("Whats up bro?aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         let time: Label = builder
             .object("time")
