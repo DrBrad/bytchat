@@ -19,7 +19,7 @@ impl GroupListItem {
         let icon: RoundImage = builder
             .object("icon")
             .expect("Couldn't find 'icon' in group_list_item.ui");
-        icon.set_from_file(Some("/home/brad/Downloads/Designer.jpeg"));
+        icon.set_from_file(Some("/Users/brad/Pictures/ic_launcher.png"));
 
         let name: Label = builder
             .object("name")
