@@ -51,8 +51,8 @@
                         <child>
                             <object class="GtkImage">
                                 <property name="visible">True</property>
-                                <property name="width-request">32</property>
-                                <property name="height-request">32</property>
+                                <property name="width-request">24</property>
+                                <property name="height-request">24</property>
                                 <property name="resource">/com/bytchat/rust/res/icons/ic_options.svg</property>
                             </object>
                         </child>
@@ -94,8 +94,8 @@
                         <child>
                             <object class="GtkImage">
                                 <property name="visible">True</property>
-                                <property name="width-request">32</property>
-                                <property name="height-request">32</property>
+                                <property name="width-request">24</property>
+                                <property name="height-request">24</property>
                                 <property name="resource">/com/bytchat/rust/res/icons/ic_emoji.svg</property>
                             </object>
                         </child>
@@ -120,8 +120,8 @@
                         <child>
                             <object class="GtkImage">
                                 <property name="visible">True</property>
-                                <property name="width-request">32</property>
-                                <property name="height-request">32</property>
+                                <property name="width-request">24</property>
+                                <property name="height-request">24</property>
                                 <property name="resource">/com/bytchat/rust/res/icons/ic_attachments.svg</property>
                             </object>
                         </child>

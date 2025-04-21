@@ -73,6 +73,11 @@ menu {
 
 
 
+entry selection {
+    background-color: @primary;
+    color: @text_primary;
+}
+
 
 
 
