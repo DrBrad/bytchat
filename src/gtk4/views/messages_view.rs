@@ -1,6 +1,6 @@
 use gtk4::{Builder, Label, ListBox};
 use crate::gtk4::views::group_list_item::GroupListItem;
-use crate::gtk4::views::message_list_item::MessageListItem;
+use crate::gtk4::views::message_list_item::{MessageListItem, MessageTypes};
 use crate::gtk4::widgets::round_image::RoundImage;
 
 pub struct MessagesView {
@@ -33,7 +33,13 @@ impl MessagesView {
             .expect("Couldn't find 'messages_list' in messages_view.ui");
 
         for i in 0..20 {
-            let message = MessageListItem::new();
+            if i % 4 == 0 {
+                let message = MessageListItem::new(MessageTypes::To);
+                messages_list.append(&message.root);
+                continue
+            }
+
+            let message = MessageListItem::new(MessageTypes::From);
             messages_list.append(&message.root);
         }
 

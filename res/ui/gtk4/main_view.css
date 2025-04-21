@@ -51,10 +51,39 @@
     padding: 10px;
 }
 
-#messages_list #to_message {
+#messages_list row {
+    all: unset;
+}
+
+#messages_list #message_container {
     padding: 10px;
+    margin: 2px 0;
     border-radius: 20px;
+    background-color: @secondary;
+}
+
+#messages_list #message_container.to {
+    background-color: @secondary;
+}
+
+#messages_list #message_container.from {
     background-color: @background_shimmer;
+}
+
+#messages_list #message_container.from.previous {
+    border-top-left-radius: 2px;
+}
+
+#messages_list #message_container.from.next {
+    border-bottom-left-radius: 2px;
+}
+
+#messages_list #message_container.to.previous {
+    border-top-right-radius: 2px;
+}
+
+#messages_list #message_container.to.next {
+    border-bottom-right-radius: 2px;
 }
 
 

@@ -15,7 +15,8 @@
         <file alias="res/ui/group_list_item.ui" preprocess="xml-stripblanks">res/ui/gtk4/group_list_item.ui</file>
 
         <file alias="res/ui/messages_view.ui" preprocess="xml-stripblanks">res/ui/gtk4/messages_view.ui</file>
-        <file alias="res/ui/message_list_item.ui" preprocess="xml-stripblanks">res/ui/gtk4/message_list_item.ui</file>
+        <file alias="res/ui/to_message_list_item.ui" preprocess="xml-stripblanks">res/ui/gtk4/to_message_list_item.ui</file>
+        <file alias="res/ui/from_message_list_item.ui" preprocess="xml-stripblanks">res/ui/gtk4/from_message_list_item.ui</file>
 
         <file preprocess="xml-stripblanks">res/icons/ic_emoji.svg</file>
         <file preprocess="xml-stripblanks">res/icons/ic_attachments.svg</file>

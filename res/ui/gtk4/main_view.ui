@@ -13,7 +13,7 @@
             <object class="GtkPaned" id="activity_pane">
                 <property name="visible">True</property>
                 <property name="orientation">horizontal</property>
-                <property name="position">400</property>
+                <property name="position">320</property>
             </object>
         </child>
     </object>

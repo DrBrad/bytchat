@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk+" version="4.0"/>
+
+    <object class="GtkListBoxRow" id="root">
+        <property name="visible">True</property>
+
+        <child>
+            <object class="GtkBox" id="message_container">
+                <property name="name">message_container</property>
+                <property name="visible">True</property>
+                <property name="halign">end</property>
+                <property name="orientation">horizontal</property>
+                <property name="spacing">10</property>
+
+                <child>
+                    <object class="GTKLabel" id="message">
+                        <property name="visible">True</property>
+                        <property name="halign">start</property>
+                        <property name="xalign">0.0</property>
+                    </object>
+                </child>
+
+                <style>
+                    <class name="to"/>
+                </style>
+            </object>
+        </child>
+    </object>
+</interface>
