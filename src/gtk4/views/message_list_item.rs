@@ -8,6 +8,7 @@ pub enum MessageTypes {
 
 pub struct MessageListItem {
     pub root: ListBoxRow,
+    pub _type: MessageTypes,
     pub message_container: gtk4::Box,
     pub message: Label
 }
@@ -35,6 +36,7 @@ impl MessageListItem {
 
         Self {
             root,
+            _type,
             message_container,
             message
         }

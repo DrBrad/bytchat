@@ -35,6 +35,29 @@
                         <property name="xalign">0.0</property>
                     </object>
                 </child>
+
+                <child>
+                    <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="hexpand">True</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkButton" id="options">
+                        <property name="name">options</property>
+                        <property name="visible">True</property>
+
+                        <child>
+                            <object class="GtkImage">
+                                <property name="visible">True</property>
+                                <property name="width-request">32</property>
+                                <property name="height-request">32</property>
+                                <property name="resource">/com/bytchat/rust/res/icons/ic_options.svg</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
             </object>
         </child>
 

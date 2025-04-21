@@ -1,5 +1,5 @@
 use gtk4::{Builder, Label, ListBox, ScrolledWindow};
-use gtk4::prelude::AdjustmentExt;
+use gtk4::prelude::{AdjustmentExt, WidgetExt};
 use crate::gtk4::views::group_list_item::GroupListItem;
 use crate::gtk4::views::message_list_item::{MessageListItem, MessageTypes};
 use crate::gtk4::widgets::round_image::RoundImage;
@@ -33,15 +33,31 @@ impl MessagesView {
             .object("messages_list")
             .expect("Couldn't find 'messages_list' in messages_view.ui");
 
+        let mut messages: Vec<MessageListItem> = Vec::new();
+
         for i in 0..20 {
             if i % 4 == 0 {
                 let message = MessageListItem::new(MessageTypes::To);
                 messages_list.append(&message.root);
-                continue
+
+                if !messages.is_empty() && messages.get(messages.len() - 1).unwrap()._type == MessageTypes::To {
+                    message.message_container.add_css_class("previous");
+                    messages.get(messages.len() - 1).unwrap().message_container.add_css_class("next");
+                }
+
+                messages.push(message);
+                continue;
             }
 
             let message = MessageListItem::new(MessageTypes::From);
             messages_list.append(&message.root);
+
+            if !messages.is_empty() && messages.get(messages.len() - 1).unwrap()._type == MessageTypes::From {
+                message.message_container.add_css_class("previous");
+                messages.get(messages.len() - 1).unwrap().message_container.add_css_class("next");
+            }
+
+            messages.push(message);
         }
 
 
