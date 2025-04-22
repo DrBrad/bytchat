@@ -7,23 +7,97 @@
         <property name="visible">True</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
-        <property name="orientation">vertical</property>
+        <property name="orientation">horizontal</property>
         <property name="spacing">20</property>
 
         <child>
-            <object class="GtkLabel">
-                <property name="name">header</property>
+            <object class="GtkBox">
+                <property name="name">splash</property>
                 <property name="visible">True</property>
-                <property name="label">BytChat your friends!</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">40</property>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="name">header</property>
+                        <property name="visible">True</property>
+                        <property name="label">Already have a BytChat?</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="halign">center</property>
+                        <property name="xalign">0.0</property>
+                        <property name="wrap">True</property>
+                        <property name="wrap-mode">word-char</property>
+                        <property name="max-width-chars">40</property>
+                        <property name="width-request">300</property>
+                        <property name="label">Drag and drop your key file, or paste it!</property>
+                    </object>
+                </child>
+
+                <style>
+                    <class name="section" />
+                </style>
             </object>
         </child>
 
         <child>
-            <object class="GtkEntry" id="name">
-                <property name="name">name</property>
+            <object class="GtkBox">
+                <property name="name">form</property>
                 <property name="visible">True</property>
-                <property name="placeholder_text">Name</property>
-                <property name="height-request">32</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="orientation">vertical</property>
+                <property name="spacing">40</property>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="name">header</property>
+                        <property name="visible">True</property>
+                        <property name="label">BytChat your friends!</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="halign">center</property>
+                        <property name="xalign">0.0</property>
+                        <property name="wrap">True</property>
+                        <property name="wrap-mode">word-char</property>
+                        <property name="max-width-chars">40</property>
+                        <property name="width-request">300</property>
+                        <property name="label">Creating an account is completely local, if you decide you don't want to use BytChat anymore, simply never use the app again. Messages are P2P with a completely distributed model, only you store your messages.</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkEntry" id="name">
+                        <property name="name">name</property>
+                        <property name="visible">True</property>
+                        <property name="placeholder_text">Name</property>
+                        <property name="halign">center</property>
+                        <property name="height-request">32</property>
+                    </object>
+                </child>
+
+                <child>
+                    <object class="GtkButton" id="submit">
+                        <property name="name">submit</property>
+                        <property name="visible">True</property>
+                        <property name="halign">center</property>
+                        <property name="label">Submit</property>
+                    </object>
+                </child>
+
+                <style>
+                    <class name="section" />
+                </style>
             </object>
         </child>
     </object>

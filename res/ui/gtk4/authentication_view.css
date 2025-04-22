@@ -1,5 +1,35 @@
+#authentication_view label {
+    color: @text_secondary;
+}
 
 #authentication_view #header {
     font-size: 30px;
     font-weight: bold;
+    color: @text_primary;
+}
+
+#authentication_view #form {
+    background-color: @background_secondary;
+}
+
+#authentication_view box.section {
+    padding: 100px 0;
+}
+
+#authentication_view entry {
+    all: unset;
+    min-width: 300px;
+    padding: 0 5px;
+    border-bottom: solid 2px @background_shimmer;
+    font-size: 14px;
+}
+
+#authentication_view button {
+    all: unset;
+    min-width: 300px;
+    padding: 15px 0;
+    border-radius: 40px;
+    color: @text_primary;
+    background-color: @primary;
+    font-size: 14px;
 }
