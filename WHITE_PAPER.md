@@ -101,3 +101,32 @@ Message Syncing
 ====
 
 Assuming the user wants more than 1 device to send messages from.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DataBase Store
+====
+
+- We will want to store meta being name, avatar, RSA, UID, etc...
+- Contacts
+- Chats which will store Chat UIDs, Keys, and Users
+- 
+
+
+
+
+
+
+
