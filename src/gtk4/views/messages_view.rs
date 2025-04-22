@@ -40,9 +40,14 @@ impl MessagesView {
                 let message = MessageListItem::new(MessageTypes::To);
                 messages_list.append(&message.root);
 
-                if !messages.is_empty() && messages.get(messages.len() - 1).unwrap()._type == MessageTypes::To {
-                    message.message_container.add_css_class("previous");
-                    messages.get(messages.len() - 1).unwrap().message_container.add_css_class("next");
+                if !messages.is_empty() {
+                    if  messages.get(messages.len() - 1).unwrap()._type == MessageTypes::To {
+                        message.message_container.add_css_class("previous");
+                        messages.get(messages.len() - 1).unwrap().message_container.add_css_class("next");
+
+                    } else {
+                        messages.get(messages.len() - 1).unwrap().message_container.add_css_class("gap");
+                    }
                 }
 
                 messages.push(message);
@@ -52,9 +57,14 @@ impl MessagesView {
             let message = MessageListItem::new(MessageTypes::From);
             messages_list.append(&message.root);
 
-            if !messages.is_empty() && messages.get(messages.len() - 1).unwrap()._type == MessageTypes::From {
-                message.message_container.add_css_class("previous");
-                messages.get(messages.len() - 1).unwrap().message_container.add_css_class("next");
+            if !messages.is_empty() {
+                if messages.get(messages.len() - 1).unwrap()._type == MessageTypes::From {
+                    message.message_container.add_css_class("previous");
+                    messages.get(messages.len() - 1).unwrap().message_container.add_css_class("next");
+
+                } else {
+                    messages.get(messages.len() - 1).unwrap().message_container.add_css_class("gap");
+                }
             }
 
             messages.push(message);

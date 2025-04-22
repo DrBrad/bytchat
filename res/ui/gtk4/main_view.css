@@ -78,6 +78,10 @@
     background-color: @background_shimmer;
 }
 
+#messages_list #message_container.gap {
+    margin-bottom: 10px;
+}
+
 #messages_list #message_container.from.previous {
     border-top-left-radius: 2px;
 }
