@@ -28,7 +28,7 @@
                 </child>
 
                 <child>
-                    <object class="GTKLabel" id="name">
+                    <object class="GtkLabel" id="name">
                         <property name="name">name</property>
                         <property name="visible">True</property>
                         <property name="halign">start</property>

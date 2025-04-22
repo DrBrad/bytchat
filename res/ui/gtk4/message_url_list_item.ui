@@ -13,14 +13,9 @@
                 <property name="spacing">4</property>
 
                 <child>
-                    <object class="GtkLabel" id="message">
-                        <property name="name">message</property>
+                    <object class="GtkImage" id="image">
+                        <property name="name">image</property>
                         <property name="visible">True</property>
-                        <property name="halign">start</property>
-                        <property name="xalign">0.0</property>
-                        <property name="wrap">True</property>
-                        <property name="wrap-mode">word-char</property>
-                        <property name="max-width-chars">40</property>
                     </object>
                 </child>
 
