@@ -43,13 +43,15 @@ impl App {
 
             //provider.load_from_resource("/com/bytchat/rust/res/ui/theme.css");
 
-            let builder = Builder::from_resource("/com/bytchat/rust/res/ui/bytchat_ui.xml");
-            let model: gio::MenuModel = builder
-                .object("main_window_menu")
-                .expect("Couldn't find 'main_window_menu' in bytchat_ui.xml");
-
             #[cfg(any(target_os = "linux", target_os = "windows"))]
-            app.set_menubar(Some(&model));
+            {
+                let builder = Builder::from_resource("/com/bytchat/rust/res/ui/bytchat_ui.xml");
+                let model: gio::MenuModel = builder
+                    .object("main_window_menu")
+                    .expect("Couldn't find 'main_window_menu' in bytchat_ui.xml");
+
+                app.set_menubar(Some(&model));
+            }
 
             MainWindow::new(&app);
 
