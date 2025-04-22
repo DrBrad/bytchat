@@ -48,22 +48,6 @@
     color: @text_primary;
 }
 
-/*
-#authentication_view #header {
-    font-size: 30px;
-    font-weight: bold;
-    color: @text_primary;
-}
-
-#authentication_view #form {
-    background-color: @background_secondary;
-}
-
-#authentication_view box.section {
-    padding: 100px 0;
-}
-*/
-
 #authentication_view entry {
     all: unset;
     padding: 0 5px;
