@@ -1,4 +1,6 @@
 use gtk4::{Builder, Label, ListBoxRow};
+use gtk4::Align::{End, Start};
+use gtk4::prelude::{StyleContextExt, WidgetExt};
 
 #[derive(Copy, Clone, Eq, PartialEq, Hash, Debug)]
 pub enum MessageTypes {
@@ -17,11 +19,8 @@ pub struct MessageListItem {
 impl MessageListItem {
 
     pub fn new(_type: MessageTypes) -> Self {
-        let builder = match _type {
-            MessageTypes::From => Builder::from_resource("/com/bytchat/rust/res/ui/from_message_list_item.ui"),
-            MessageTypes::To => Builder::from_resource("/com/bytchat/rust/res/ui/to_message_list_item.ui")
-        };
-        //let builder = Builder::from_resource("/com/bytchat/rust/res/ui/message_list_item.ui");
+        let builder = Builder::from_resource("/com/bytchat/rust/res/ui/message_list_item.ui");
+
         let root: ListBoxRow = builder
             .object("root")
             .expect("Couldn't find 'root' in message_list_item.ui");
@@ -29,6 +28,17 @@ impl MessageListItem {
         let message_container: gtk4::Box = builder
             .object("message_container")
             .expect("Couldn't find 'message_container' in message_list_item.ui");
+
+        match _type {
+            MessageTypes::From => {
+                message_container.style_context().add_class("from");
+                message_container.set_halign(Start);
+            },
+            MessageTypes::To => {
+                message_container.style_context().add_class("to");
+                message_container.set_halign(End);
+            }
+        }
 
         let message: Label = builder
             .object("message")

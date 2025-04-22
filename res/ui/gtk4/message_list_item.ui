@@ -9,7 +9,6 @@
             <object class="GtkBox" id="message_container">
                 <property name="name">message_container</property>
                 <property name="visible">True</property>
-                <property name="halign">start</property>
                 <property name="orientation">horizontal</property>
                 <property name="spacing">4</property>
 
@@ -33,10 +32,6 @@
                         <property name="valign">end</property>
                     </object>
                 </child>
-
-                <style>
-                    <class name="from"/>
-                </style>
             </object>
         </child>
     </object>
