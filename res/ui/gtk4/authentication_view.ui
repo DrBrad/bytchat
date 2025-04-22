@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <requires lib="gtk+" version="4.0"/>
+
+    <object class="GtkBox" id="root">
+        <property name="name">authentication_view</property>
+        <property name="visible">True</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">20</property>
+
+        <child>
+            <object class="GtkLabel">
+                <property name="name">header</property>
+                <property name="visible">True</property>
+                <property name="label">BytChat your friends!</property>
+            </object>
+        </child>
+
+        <child>
+            <object class="GtkEntry" id="name">
+                <property name="name">name</property>
+                <property name="visible">True</property>
+                <property name="placeholder_text">Name</property>
+                <property name="height-request">32</property>
+            </object>
+        </child>
+    </object>
+</interface>

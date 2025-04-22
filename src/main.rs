@@ -22,6 +22,8 @@ use crate::kad::run_p2p;
 /*
 rustup install nightly
 rustup override set nightly
+
+sudo apt install libssl-dev
 */
 
 fn main() {
@@ -39,17 +41,6 @@ fn main() {
     println!("Private Key (PEM):\n{}", String::from_utf8_lossy(&private_pem));
     println!("Public Key (PEM):\n{}", String::from_utf8_lossy(&public_pem));
     */
-
-    match Database::open_existing("app.db") {
-        Ok(db) => {
-            println!("Successfully connected to the database");
-        }
-        Err(_) => {
-            println!("Failed to connect to the database");
-            //CREATE RSA KEY, ASK NAME ETC...
-            //OR TRY USING RSA-KEY LOGIN...
-        }
-    }
 
 
     let app = App::new();
