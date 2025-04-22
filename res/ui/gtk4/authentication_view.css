@@ -1,7 +1,54 @@
-#authentication_view label {
-    color: @text_secondary;
+
+
+
+
+
+
+
+#authentication_view notebook {
+    border: none;
+    box-shadow: none;
+    background-color: @background;
 }
 
+#authentication_view notebook > header {
+    border-bottom: none;
+    box-shadow: none;
+}
+
+#authentication_view notebook tabs {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background-color: @background;
+}
+
+
+#authentication_view notebook tab {
+    font-size: 20px;
+    padding: 10px 15px;
+    margin: 0;
+    border-bottom: solid 4px @background_shimmer;
+    color: @text_primary;
+}
+
+#authentication_view notebook tab:checked {
+    border-bottom: solid 4px @primary;
+}
+
+#authentication_view notebook stack {
+    padding-top: 40px;
+    background-color: @background;
+}
+
+
+#authentication_view notebook stack #header {
+    font-size: 20px;
+    font-weight: bold;
+    color: @text_primary;
+}
+
+/*
 #authentication_view #header {
     font-size: 30px;
     font-weight: bold;
@@ -15,18 +62,17 @@
 #authentication_view box.section {
     padding: 100px 0;
 }
+*/
 
 #authentication_view entry {
     all: unset;
-    min-width: 300px;
     padding: 0 5px;
-    border-bottom: solid 2px @background_shimmer;
+    border-bottom: solid 3px @background_shimmer;
     font-size: 14px;
 }
 
 #authentication_view button {
     all: unset;
-    min-width: 300px;
     padding: 15px 0;
     border-radius: 40px;
     color: @text_primary;
