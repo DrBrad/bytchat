@@ -8,6 +8,7 @@ use gtk4::prelude::{ApplicationWindowExt, BoxExt, Cast, GestureSingleExt, GtkApp
 use crate::database::sqlite::Database;
 use crate::gtk4::actions::window_actions::register_window_actions;
 use crate::gtk4::views::authentication_view::AuthenticationView;
+use crate::gtk4::views::create_view::CreateView;
 use crate::gtk4::views::inter::stackable::Stackable;
 use crate::gtk4::views::main_view::MainView;
 
@@ -157,7 +158,7 @@ impl MainWindow {
                 //CREATE RSA KEY, ASK NAME ETC...
                 //OR TRY USING RSA-KEY LOGIN...
                 _self.window.set_show_menubar(false);
-                _self.add_view(Box::new(AuthenticationView::new()));
+                _self.add_view(Box::new(CreateView::new()));
             }
         }
 

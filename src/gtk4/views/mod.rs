@@ -1,4 +1,5 @@
 pub mod inter;
+pub mod create_view;
 pub mod authentication_view;
 pub mod main_view;
 pub mod groups_view;
