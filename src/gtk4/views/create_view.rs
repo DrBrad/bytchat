@@ -12,10 +12,6 @@ impl CreateView {
     pub fn new() -> Self {
         let builder = Builder::from_resource("/com/bytchat/rust/res/ui/create_view.ui");
 
-        let provider = CssProvider::new();
-        provider.load_from_resource("/com/bytchat/rust/res/ui/create_view.css");
-        style_context_add_provider_for_display(&gdk::Display::default().unwrap(), &provider, gtk4::STYLE_PROVIDER_PRIORITY_APPLICATION);
-
         let root: gtk4::Box = builder
             .object("root")
             .expect("Couldn't find 'root' in create_view.ui");

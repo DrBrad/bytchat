@@ -158,7 +158,7 @@ impl MainWindow {
                 //CREATE RSA KEY, ASK NAME ETC...
                 //OR TRY USING RSA-KEY LOGIN...
                 _self.window.set_show_menubar(false);
-                _self.add_view(Box::new(CreateView::new()));
+                _self.add_view(Box::new(AuthenticationView::new()));
             }
         }
 
