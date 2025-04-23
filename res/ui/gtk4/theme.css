@@ -3,14 +3,10 @@
 @define-color background_secondary #000000;
 @define-color background_shimmer #393b40;
 
-@define-color text_primary #cbd7dc;
+@define-color text_primary #e6e6e6;
 @define-color text_secondary #a7a7a7;
-@define-color text_dark #9B9D9F;
 
 @define-color ripple rgba(255, 255, 255, 0.15);
-
-@define-color border #5a5d63;
-@define-color border_light #4e5157;
 
 @define-color purple #784da1;
 @define-color green #57965C;
