@@ -43,12 +43,25 @@
 
 #authentication_view entry {
     all: unset;
-    padding: 0 5px;
-    border-bottom: solid 3px @background_shimmer;
+    padding: 10px 5px;
     font-size: 16px;
 }
 
-#authentication_view button {
+#authentication_view entry.text {
+    border-bottom: solid 3px @background_shimmer;
+}
+
+#authentication_view box.password {
+    border-bottom: solid 3px @background_shimmer;
+}
+
+#authentication_view box.password button {
+    min-width: 0;
+    min-height: 0;
+    background: none;
+}
+
+#authentication_view #submit {
     all: unset;
     padding: 15px 0;
     border-radius: 40px;

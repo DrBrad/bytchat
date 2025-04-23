@@ -28,7 +28,7 @@ sudo apt install libssl-dev
 */
 
 fn main() {
-    let key = load_profile_key("asd").unwrap();
+    //let key = load_profile_key("asd").unwrap();
 
     let app = App::new();
     app.run();
