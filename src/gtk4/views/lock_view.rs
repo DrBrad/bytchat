@@ -4,30 +4,30 @@ use gtk4::prelude::{ActionMapExt, Cast, EditableExt, EntryExt, ObjectExt, Widget
 use crate::gtk4::views::inter::stackable::Stackable;
 use crate::utils::key_utils::create_profile_key;
 
-pub struct CreateView {
+pub struct LockView {
     pub root: gtk4::Box
 }
 
-impl CreateView {
+impl LockView {
 
     pub fn new() -> Self {
-        let builder = Builder::from_resource("/com/bytchat/rust/res/ui/create_view.ui");
+        let builder = Builder::from_resource("/com/bytchat/rust/res/ui/lock_view.ui");
 
         let root: gtk4::Box = builder
             .object("root")
-            .expect("Couldn't find 'root' in create_view.ui");
+            .expect("Couldn't find 'root' in lock_view.ui");
 
         let password: Entry = builder
             .object("password")
-            .expect("Couldn't find 'password' in create_view.ui");
+            .expect("Couldn't find 'password' in lock_view.ui");
 
         let password_toggle: Image = builder
             .object("password_toggle")
-            .expect("Couldn't find 'password_toggle' in create_view.ui");
+            .expect("Couldn't find 'password_toggle' in lock_view.ui");
 
         let actions = SimpleActionGroup::new();
 
-        root.insert_action_group("create", Some(&actions));
+        root.insert_action_group("lock", Some(&actions));
 
         let action = SimpleAction::new("password_toggle", None);
         action.connect_activate({
@@ -51,15 +51,7 @@ impl CreateView {
         action.connect_activate({
             let password = password.clone();
             move |_, _| {
-                println!("SUBMIT {}", "");
-                let password = password.text().to_string();
-
-                match create_profile_key(&password) {
-                    Ok(keypair) => {
-                        
-                    }
-                    Err(_) => {}
-                }
+                println!("SUBMIT {}", password.text());
             }
         });
         actions.add_action(&action);
@@ -70,10 +62,10 @@ impl CreateView {
     }
 }
 
-impl Stackable for CreateView {
+impl Stackable for LockView {
 
     fn get_name(&self) -> String {
-        String::from("create_view")
+        String::from("lock_view")
     }
 
     fn get_root(&self) -> &Widget {

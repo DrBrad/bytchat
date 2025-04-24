@@ -30,6 +30,18 @@ pub fn create_profile_key(password: &str) -> io::Result<Rsa<Private>> {
     Ok(rsa)
 }
 
+pub fn profile_key_exists() -> bool {
+    let mut path = if let Ok(sudo_user) = env::var("SUDO_USER") {
+        Path::new(&format!("/home/{}/", sudo_user)).to_path_buf()
+    } else {
+        env::var("HOME").map(PathBuf::from).unwrap_or_else(|_| PathBuf::from("/"))
+    };
+    path.push(".bytchat");
+    path.push("keypair.pem");
+    
+    path.exists()
+}
+
 pub fn load_profile_key(password: &str) -> io::Result<Rsa<Private>> {
     let mut path = if let Ok(sudo_user) = env::var("SUDO_USER") {
         Path::new(&format!("/home/{}/", sudo_user)).to_path_buf()

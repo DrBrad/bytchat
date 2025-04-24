@@ -10,7 +10,9 @@ use crate::gtk4::actions::window_actions::register_window_actions;
 use crate::gtk4::views::authentication_view::AuthenticationView;
 use crate::gtk4::views::create_view::CreateView;
 use crate::gtk4::views::inter::stackable::Stackable;
+use crate::gtk4::views::lock_view::LockView;
 use crate::gtk4::views::main_view::MainView;
+use crate::utils::key_utils::profile_key_exists;
 
 #[derive(Clone)]
 pub struct MainWindow {
@@ -148,6 +150,18 @@ impl MainWindow {
         };
 
 
+        match profile_key_exists() {
+            true => {
+                _self.window.set_show_menubar(false);
+                _self.add_view(Box::new(LockView::new()));
+                //_self.add_view(Box::new(MainView::new()));
+            }
+            false => {
+                _self.window.set_show_menubar(false);
+                _self.add_view(Box::new(AuthenticationView::new()));
+            }
+        }
+        /*
         match Database::open_existing("app.db") {
             Ok(db) => {
                 println!("Successfully connected to the database");
@@ -161,6 +175,7 @@ impl MainWindow {
                 _self.add_view(Box::new(AuthenticationView::new()));
             }
         }
+        */
 
         //_self.add_view(Box::new(MainView::new()));
 
