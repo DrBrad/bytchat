@@ -6,13 +6,13 @@ use std::rc::Rc;
 use gtk4::{gdk, gio, style_context_add_provider_for_display, Application, ApplicationWindow, Builder, CssProvider, GestureClick, HeaderBar, Stack, StackPage, StyleContext, Widget};
 use gtk4::prelude::{ApplicationWindowExt, BoxExt, Cast, GestureSingleExt, GtkApplicationExt, GtkWindowExt, ListModelExt, ObjectExt, StyleContextExt, WidgetExt};
 use crate::database::sqlite::Database;
-use crate::gtk4::actions::window_actions::register_window_actions;
+use crate::gtk4::actions::window_actions::{register_stack_actions, register_window_actions};
 use crate::gtk4::views::authentication_view::AuthenticationView;
 use crate::gtk4::views::create_view::CreateView;
 use crate::gtk4::views::inter::stackable::Stackable;
 use crate::gtk4::views::lock_view::LockView;
 use crate::gtk4::views::main_view::MainView;
-use crate::utils::key_utils::profile_key_exists;
+use crate::utils::profile::Profile;
 
 #[derive(Clone)]
 pub struct MainWindow {
@@ -150,15 +150,15 @@ impl MainWindow {
         };
 
 
-        match profile_key_exists() {
+        match Profile::exists() {
             true => {
                 _self.window.set_show_menubar(false);
-                _self.add_view(Box::new(LockView::new()));
+                _self.add_view(Box::new(LockView::new(&_self)));
                 //_self.add_view(Box::new(MainView::new()));
             }
             false => {
                 _self.window.set_show_menubar(false);
-                _self.add_view(Box::new(AuthenticationView::new()));
+                _self.add_view(Box::new(AuthenticationView::new(&_self)));
             }
         }
         /*
@@ -180,7 +180,7 @@ impl MainWindow {
         //_self.add_view(Box::new(MainView::new()));
 
         register_window_actions(&_self);
-        //register_stack_actions(&_self);
+        register_stack_actions(&_self);
 
         _self
     }

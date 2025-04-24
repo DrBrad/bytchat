@@ -1,5 +1,6 @@
 use gtk4::{glib, AboutDialog, License, Window};
 use gtk4::gio::{AppInfo, AppLaunchContext, File, SimpleAction};
+use gtk4::glib::{VariantDict, VariantTy};
 use gtk4::prelude::{ActionMapExt, Cast, GtkWindowExt};
 use crate::gtk4::windows::main_window::MainWindow;
 
@@ -15,6 +16,44 @@ pub fn register_window_actions(window: &MainWindow) {
         let window = window.window.clone();
         move |_, _| {
             open_about_dialog(&window.upcast_ref());
+        }
+    });
+    window.window.add_action(&action);
+}
+
+pub fn register_stack_actions(window: &MainWindow) {
+    let action = SimpleAction::new("view", Some(&VariantTy::new("a{sv}").unwrap()));
+    //let action = SimpleAction::new("open", Some(&glib::VariantTy::BYTE_STRING));//Some(&glib::VariantTy::ANY));
+    action.connect_activate({
+        let window = window.clone();
+        move |_, param| {
+            if let Some(param) = param {
+                if let Some(dict) = param.get::<VariantDict>() {
+                    if let Some(name) = dict.lookup::<String>("name").ok().unwrap() {
+                        let view = match name.as_str() {
+                            "main_view" => {
+                                if let Some(_type) = dict.lookup::<String>("type").ok().unwrap() {
+                                    match _type.as_str() {
+                                        "device" => {
+                                            //let device = Device::unserialize(&dict.lookup::<Vec<u8>>("device").ok().unwrap().unwrap());
+                                            //Box::new(MainView::from_device(&window, &device))
+                                        }
+                                        "any" => {
+                                            //Box::new(MainView::new(&window))
+                                        }
+                                        _ => unimplemented!()
+                                    }
+                                } else {
+                                    unimplemented!()
+                                }
+                            }
+                            _ => unimplemented!()
+                        };
+
+                        //window.add_view(view);
+                    }
+                }
+            }
         }
     });
     window.window.add_action(&action);

@@ -6,6 +6,7 @@ use crate::gtk4::views::groups_view::GroupsView;
 use crate::gtk4::views::inter::stackable::Stackable;
 use crate::gtk4::views::messages_view::MessagesView;
 use crate::gtk4::widgets::round_image::RoundImage;
+use crate::gtk4::windows::main_window::MainWindow;
 
 pub struct AuthenticationView {
     pub root: gtk4::Box,
@@ -14,7 +15,7 @@ pub struct AuthenticationView {
 
 impl AuthenticationView {
 
-    pub fn new() -> Self {
+    pub fn new(window: &MainWindow) -> Self {
         let builder = Builder::from_resource("/com/bytchat/rust/res/ui/authentication_view.ui");
 
         let provider = CssProvider::new();
@@ -29,7 +30,7 @@ impl AuthenticationView {
             .object("tab_view")
             .expect("Couldn't find 'tab_view' in authentication_view.ui");
 
-        let view = CreateView::new();
+        let view = CreateView::new(window);
         let label = Label::new(Some("Create Account"));
         label.set_hexpand(true);
         tab_view.append_page(&view.root, Some(&label));

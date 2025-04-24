@@ -1,8 +1,9 @@
 use gtk4::{gdk, style_context_add_provider_for_display, Builder, CssProvider, Entry, Image, Label, ListBox, Paned, ScrolledWindow, Widget};
 use gtk4::gio::{SimpleAction, SimpleActionGroup};
-use gtk4::prelude::{ActionMapExt, Cast, EditableExt, EntryExt, ObjectExt, WidgetExt};
+use gtk4::prelude::{ActionGroupExt, ActionMapExt, Cast, EditableExt, EntryExt, ObjectExt, WidgetExt};
 use crate::gtk4::views::inter::stackable::Stackable;
-use crate::utils::key_utils::create_profile_key;
+use crate::gtk4::windows::main_window::MainWindow;
+use crate::utils::profile::Profile;
 
 pub struct LockView {
     pub root: gtk4::Box
@@ -10,7 +11,7 @@ pub struct LockView {
 
 impl LockView {
 
-    pub fn new() -> Self {
+    pub fn new(window: &MainWindow) -> Self {
         let builder = Builder::from_resource("/com/bytchat/rust/res/ui/lock_view.ui");
 
         let provider = CssProvider::new();
@@ -53,9 +54,18 @@ impl LockView {
 
         let action = SimpleAction::new("submit", None);
         action.connect_activate({
+            let window = window.window.clone();
             let password = password.clone();
             move |_, _| {
-                println!("SUBMIT {}", password.text());
+                let password = password.text().to_string();
+                println!("SUBMIT {}", password);
+
+                match Profile::load(&password) {
+                    Ok(profile) => {
+                        ActionGroupExt::activate_action(&window, "view", None);//Some(&params));
+                    }
+                    Err(_) => {}
+                }
             }
         });
         actions.add_action(&action);

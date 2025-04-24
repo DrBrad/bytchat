@@ -15,7 +15,6 @@ use crate::database::sqlite::Database;
 #[cfg(feature = "gtk4")]
 use crate::gtk4::app::App;
 use crate::kad::run_p2p;
-use crate::utils::key_utils::{create_profile_key, load_profile_key};
 //export GTK_DEBUG=interactive
 
 //glib-compile-resources res/gtk4/linux.gresources.xml --target=res/resources.gresources
