@@ -130,3 +130,32 @@ DataBase Store
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+Alternate Plane
+====
+
+We will only store public / private keys locally along with meta
+
+This will be the new requests
+
+| Key       | Val                                     |
+|-----------|-----------------------------------------|
+| bind_user | Binds to a tracker                      |
+| find_user | Get list of nodes for user from tracker |
+
+- The DHT will only be user for routing in other words
+
+We will then have a seperate socket in which message requests and messages are sent through.
+
+Nodes will have to do finds on themselves with refreshes to ensure they have an updated list and new nodes should announce to each node given from the tracker.
+When a node announces they will then sync messages up between each other after verifying they are the same - nodes bound to the same ID should be the same user.
