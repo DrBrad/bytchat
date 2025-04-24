@@ -64,7 +64,9 @@ impl LockView {
                     Ok(profile) => {
                         ActionGroupExt::activate_action(&window, "view", None);//Some(&params));
                     }
-                    Err(_) => {}
+                    Err(_) => {
+                        println!("Invalid password");
+                    }
                 }
             }
         });

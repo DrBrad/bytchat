@@ -148,10 +148,10 @@ We will only store public / private keys locally along with meta
 
 This will be the new requests
 
-| Key       | Val                                     |
-|-----------|-----------------------------------------|
-| bind_user | Binds to a tracker                      |
-| find_user | Get list of nodes for user from tracker |
+| Key          | Val                                     |
+|--------------|-----------------------------------------|
+| bind_tracker | Binds to a tracker                      |
+| find_user    | Get list of nodes for user from tracker |
 
 - The DHT will only be user for routing in other words
 
@@ -159,3 +159,24 @@ We will then have a seperate socket in which message requests and messages are s
 
 Nodes will have to do finds on themselves with refreshes to ensure they have an updated list and new nodes should announce to each node given from the tracker.
 When a node announces they will then sync messages up between each other after verifying they are the same - nodes bound to the same ID should be the same user.
+
+
+Bind Tracker Request
+----
+
+- we need to ensure replay attacks cannot occur...
+- though it wouldn't be the end of the world as without the correct key they cannot decode, but they could eclipse messages to the receiver...
+
+```json
+{
+    "t": "aa",
+    "y": "r",
+    "r": {
+        "id": "mnopqrstuvwxyz123456",
+        "key": "mnopqrstuvwxyz123456mnopqrstuvwxyz123456",
+        "port": 6771,
+        "signature": "mnopqrstuvwxyz123456",
+        "timestamp": 12736172123
+    }
+}
+```

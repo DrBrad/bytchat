@@ -1,5 +1,6 @@
 mod kad;
 mod database;
+mod utils;
 
 //#[cfg(feature = "gtk3")]
 //mod gtk3;
@@ -8,13 +9,8 @@ mod database;
 
 #[cfg(feature = "gtk4")]
 mod gtk4;
-mod utils;
-
-use openssl::rsa::Rsa;
-use crate::database::sqlite::Database;
 #[cfg(feature = "gtk4")]
 use crate::gtk4::app::App;
-use crate::kad::run_p2p;
 //export GTK_DEBUG=interactive
 
 //glib-compile-resources res/gtk4/linux.gresources.xml --target=res/resources.gresources
