@@ -69,3 +69,7 @@
     background-color: @primary;
     font-size: 14px;
 }
+
+#authentication_view #submit:active {
+    background-color: @ripple;
+}

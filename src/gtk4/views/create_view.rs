@@ -56,7 +56,7 @@ impl CreateView {
 
                 match create_profile_key(&password) {
                     Ok(keypair) => {
-                        
+
                     }
                     Err(_) => {}
                 }

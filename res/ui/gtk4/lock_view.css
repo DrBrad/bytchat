@@ -1,0 +1,32 @@
+#lock_view entry {
+    all: unset;
+    padding: 10px 5px;
+    font-size: 16px;
+}
+
+#lock_view entry.text {
+    border-bottom: solid 3px @background_shimmer;
+}
+
+#lock_view box.password {
+    border-bottom: solid 3px @background_shimmer;
+}
+
+#lock_view box.password button {
+    min-width: 0;
+    min-height: 0;
+    background: none;
+}
+
+#lock_view #submit {
+    all: unset;
+    padding: 15px 0;
+    border-radius: 40px;
+    color: @text_primary;
+    background-color: @primary;
+    font-size: 14px;
+}
+
+#lock_view #submit:active {
+    background-color: @ripple;
+}

@@ -7,7 +7,6 @@
         <property name="visible">True</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
-        <property name="orientation">horizontal</property>
         <property name="spacing">20</property>
 
         <child>

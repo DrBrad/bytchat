@@ -3,61 +3,70 @@
     <requires lib="gtk+" version="4.0"/>
 
     <object class="GtkBox" id="root">
-        <property name="name">lockscreen_view</property>
+        <property name="name">lock_view</property>
         <property name="visible">True</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">40</property>
 
         <child>
             <object class="GtkBox">
                 <property name="visible">True</property>
-                <property name="orientation">horizontal</property>
-                <property name="spacing">6</property>
+                <property name="orientation">vertical</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="width-request">500</property>
+                <property name="spacing">40</property>
 
                 <child>
-                    <object class="GtkEntry" id="password">
-                        <property name="name">password</property>
+                    <object class="GtkBox">
                         <property name="visible">True</property>
-                        <property name="hexpand">True</property>
-                        <property name="placeholder_text">Password</property>
-                        <property name="visibility">False</property>
-                        <property name="input-purpose">password</property>
-                        <property name="height-request">32</property>
-                    </object>
-                </child>
-
-                <child>
-                    <object class="GtkButton">
-                        <property name="visible">True</property>
-                        <property name="tooltip-text">Show/Hide Password</property>
-                        <property name="action-name">lock.password_toggle</property>
+                        <property name="orientation">horizontal</property>
+                        <property name="spacing">6</property>
 
                         <child>
-                            <object class="GtkImage" id="password_toggle">
+                            <object class="GtkEntry" id="password">
+                                <property name="name">password</property>
                                 <property name="visible">True</property>
-                                <property name="width-request">24</property>
-                                <property name="height-request">24</property>
-                                <property name="resource">/com/bytchat/rust/res/icons/ic_visible.svg</property>
+                                <property name="hexpand">True</property>
+                                <property name="placeholder_text">Password</property>
+                                <property name="visibility">False</property>
+                                <property name="input-purpose">password</property>
+                                <property name="height-request">32</property>
                             </object>
                         </child>
+
+                        <child>
+                            <object class="GtkButton">
+                                <property name="visible">True</property>
+                                <property name="tooltip-text">Show/Hide Password</property>
+                                <property name="action-name">lock.password_toggle</property>
+
+                                <child>
+                                    <object class="GtkImage" id="password_toggle">
+                                        <property name="visible">True</property>
+                                        <property name="width-request">24</property>
+                                        <property name="height-request">24</property>
+                                        <property name="resource">/com/bytchat/rust/res/icons/ic_visible.svg</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                        <style>
+                            <class name="password" />
+                        </style>
                     </object>
                 </child>
 
-                <style>
-                    <class name="password" />
-                </style>
-            </object>
-        </child>
-
-        <child>
-            <object class="GtkButton" id="submit">
-                <property name="name">submit</property>
-                <property name="visible">True</property>
-                <property name="hexpand">True</property>
-                <property name="label">Submit</property>
-                <property name="action-name">lock.submit</property>
+                <child>
+                    <object class="GtkButton" id="submit">
+                        <property name="name">submit</property>
+                        <property name="visible">True</property>
+                        <property name="hexpand">True</property>
+                        <property name="label">Submit</property>
+                        <property name="action-name">lock.submit</property>
+                    </object>
+                </child>
             </object>
         </child>
     </object>
