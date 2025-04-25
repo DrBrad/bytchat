@@ -1,5 +1,7 @@
 use std::any::Any;
 use std::net::SocketAddr;
+use openssl::pkey::Public;
+use openssl::rsa::Rsa;
 use rlibdht::kad::server::TID_LENGTH;
 use rlibdht::messages::inter::message_base::{MessageBase, TID_KEY};
 use rlibdht::messages::inter::message_exception::MessageException;
@@ -14,7 +16,9 @@ pub struct BindTrackerRequest {
     tid: [u8; TID_LENGTH],
     public: Option<SocketAddr>,
     destination: Option<SocketAddr>,
-    origin: Option<SocketAddr>
+    origin: Option<SocketAddr>,
+    key: Option<Rsa<Public>>,
+    port: Option<u16>
 }
 
 impl BindTrackerRequest {
@@ -24,6 +28,22 @@ impl BindTrackerRequest {
             tid,
             ..Default::default()
         }
+    }
+
+    pub fn set_key(&mut self, key: Rsa<Public>) {
+        self.key = Some(key);
+    }
+
+    pub fn get_key(&self) -> Option<&Rsa<Public>> {
+        self.key.as_ref()
+    }
+
+    pub fn set_port(&mut self, port: u16) {
+        self.port = Some(port);
+    }
+
+    pub fn get_port(&self) -> Option<u16> {
+        self.port
     }
 }
 
@@ -35,12 +55,13 @@ impl Default for BindTrackerRequest {
             tid: [0u8; TID_LENGTH],
             public: None,
             destination: None,
-            origin: None
+            origin: None,
+            key: None,
+            port: None
         }
     }
 }
 
-//I WONDER IF WE CAN MACRO THIS SHIT FOR EVERY CLASS...?
 impl MessageBase for BindTrackerRequest {
 
     fn set_uid(&mut self, uid: UID) {
@@ -101,6 +122,14 @@ impl MessageBase for BindTrackerRequest {
         ben.put(self.get_type().inner_key(), BencodeObject::new());
         ben.get_object_mut(self.get_type().inner_key()).unwrap().put("id", self.uid.unwrap().bytes().clone());
 
+        if let Some(key) = &self.key {
+            ben.get_object_mut(self.get_type().inner_key()).unwrap().put("k", key.public_key_to_der().unwrap());
+        }
+
+        if let Some(port) = self.port {
+            ben.put("p", port);
+        }
+
         ben
     }
 
@@ -109,13 +138,25 @@ impl MessageBase for BindTrackerRequest {
             return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203));
         }
 
-        if !ben.get_object(self.get_type().inner_key()).unwrap().contains_key("id") {
-            return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203));
+        match ben.get_object(self.get_type().inner_key()).unwrap().get_bytes("id") {
+            Ok(id) => {
+                let mut bid = [0u8; ID_LENGTH];
+                bid.copy_from_slice(&id[..ID_LENGTH]);
+                self.uid = Some(UID::from(bid));
+            }
+            _ => return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203))
         }
 
-        let mut bid = [0u8; ID_LENGTH];
-        bid.copy_from_slice(&ben.get_object(self.get_type().inner_key()).unwrap().get_bytes("id").unwrap()[..ID_LENGTH]);
-        self.uid = Some(UID::from(bid));
+        match ben.get_object(self.get_type().inner_key()).unwrap().get_bytes("k") {
+            Ok(key) => {
+            }
+            _ => return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203))
+        }
+
+        match ben.get_object(self.get_type().inner_key()).unwrap().get_number::<u16>("p") {
+            Ok(port) => self.port = Some(port),
+            _ => return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203))
+        }
 
         Ok(())
     }
