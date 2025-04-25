@@ -148,8 +148,7 @@ impl MessageBase for BindTrackerRequest {
         }
 
         match ben.get_object(self.get_type().inner_key()).unwrap().get_bytes("k") {
-            Ok(key) => {
-            }
+            Ok(key) => self.key = Some(Rsa::public_key_from_der(key).unwrap()),
             _ => return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203))
         }
 
