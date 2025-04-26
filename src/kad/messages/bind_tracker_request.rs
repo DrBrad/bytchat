@@ -124,7 +124,7 @@ impl MessageBase for BindTrackerRequest {
         }
 
         if let Some(port) = self.port {
-            ben.put("p", port);
+            ben.get_object_mut(self.get_type().inner_key()).unwrap().put("p", port);
         }
 
         ben
