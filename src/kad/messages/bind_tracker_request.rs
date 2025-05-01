@@ -136,7 +136,7 @@ impl MessageBase for BindTrackerRequest {
         }
 
         match ben.get_object(self.get_type().inner_key()).unwrap().get_bytes("id") {
-            Ok(id) => {
+            Some(id) => {
                 let mut bid = [0u8; ID_LENGTH];
                 bid.copy_from_slice(&id[..ID_LENGTH]);
                 self.uid = Some(UID::from(bid));
@@ -145,12 +145,12 @@ impl MessageBase for BindTrackerRequest {
         }
 
         match ben.get_object(self.get_type().inner_key()).unwrap().get_bytes("k") {
-            Ok(key) => self.key = Some(Rsa::public_key_from_der(key).unwrap()),
+            Some(key) => self.key = Some(Rsa::public_key_from_der(key).unwrap()),
             _ => return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203))
         }
 
         match ben.get_object(self.get_type().inner_key()).unwrap().get_number::<u16>("p") {
-            Ok(port) => self.port = Some(port),
+            Some(port) => self.port = Some(port),
             _ => return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203))
         }
 
