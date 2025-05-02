@@ -1,2 +1,2 @@
 pub mod sqlite;
-mod sql_value;
+pub mod sql_value;
