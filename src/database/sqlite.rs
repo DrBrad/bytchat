@@ -108,7 +108,7 @@ fn execute_sql(db: *mut u32, sql: &str) -> i32 {
 }
 */
 #[link(name = "sqlite3")]
-extern "C" {
+unsafe extern "C" {
     fn sqlite3_open_v2(filename: *const i8, db: *mut *mut u32, flags: i32, z_vfs: *const i8) -> i32;
 
     fn sqlite3_exec(

@@ -5,7 +5,8 @@ use rlibdht::messages::inter::message_base::{MessageBase, TID_KEY};
 use rlibdht::messages::inter::message_exception::MessageException;
 use rlibdht::messages::inter::message_type::{MessageType, TYPE_KEY};
 use rlibdht::messages::inter::method_message_base::MethodMessageBase;
-use rlibdht::rlibbencode::variables::bencode_object::{BencodeObject, PutObject};
+use rlibdht::rlibbencode::variables::bencode_bytes::BencodeBytes;
+use rlibdht::rlibbencode::variables::bencode_object::{BencodeObject, GetObject, ObjectOptions, PutObject};
 use rlibdht::utils::uid::{ID_LENGTH, UID};
 
 #[derive(Clone)]
@@ -95,7 +96,7 @@ impl MessageBase for FindUserRequest {
 
         ben.put(self.get_type().rpc_type_name(), self.get_method());
         ben.put(self.get_type().inner_key(), BencodeObject::new());
-        ben.get_object_mut(self.get_type().inner_key()).unwrap().put("id", self.uid.unwrap().bytes().clone());
+        ben.get_mut::<BencodeObject>(self.get_type().inner_key()).unwrap().put("id", self.uid.unwrap().bytes().clone());
 
         ben
     }
@@ -105,10 +106,10 @@ impl MessageBase for FindUserRequest {
             return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203));
         }
 
-        match ben.get_object(self.get_type().inner_key()).unwrap().get_bytes("id") {
+        match ben.get::<BencodeObject>(self.get_type().inner_key()).unwrap().get::<BencodeBytes>("id") {
             Some(id) => {
                 let mut bid = [0u8; ID_LENGTH];
-                bid.copy_from_slice(&id[..ID_LENGTH]);
+                bid.copy_from_slice(&id.as_bytes()[..ID_LENGTH]);
                 self.uid = Some(UID::from(bid));
             }
             _ => return Err(MessageException::new("Protocol Error, such as a malformed packet.", 203))
